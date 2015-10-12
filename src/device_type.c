@@ -23,6 +23,7 @@ char *device_type_to_str(device_type c)
       case SERVER: return create_string(CONST_STRING("server"));
       case SIMULATOR: return create_string(CONST_STRING("simulator"));
       case TABLET: return create_string(CONST_STRING("tablet"));
+      case TV: return create_string(CONST_STRING("tv"));
       case UNKNOWN: return create_string(CONST_STRING("unknown"));
       default: elog(ERROR, "internal error unexpected num in device_type_to_str");
   }
@@ -56,6 +57,15 @@ get_device_type_num_s(const char *str)
       default : return 0;
     }
 }
+static inline uint8
+get_device_type_num_t(const char *str)
+{
+    switch (str[1]) {
+      case 'v': return check_device_type_num(str, "tv", TV);
+      case 'a': return check_device_type_num(str, "tablet", TABLET);
+      default : return 0;
+    }
+}
 
 
 static inline
@@ -72,7 +82,7 @@ device_type device_type_from_str(const char *str)
 		case 'm': return check_device_type_num(str, "mac", MAC);
     case 'p': return get_device_type_num_p(str);
     case 's': return get_device_type_num_s(str);
-    case 't': return check_device_type_num(str, "tablet", TABLET);
+    case 't': return get_device_type_num_t(str);
     case 'u': return check_device_type_num(str, "unknown", UNKNOWN);
 	}
 

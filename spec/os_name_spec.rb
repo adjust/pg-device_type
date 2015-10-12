@@ -16,6 +16,7 @@ describe 'device_type' do
       'server',
       'simulator',
       'tablet',
+      'tv',
       'unknown',
     ].each do |name|
       query("SELECT '#{name}'::device_type").should match name

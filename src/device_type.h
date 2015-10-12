@@ -22,6 +22,7 @@ typedef uint8 device_type;
 #define SERVER    160
 #define SIMULATOR 180
 #define TABLET    200
+#define TV        220
 #define UNKNOWN   255
 
 Datum device_type_in(PG_FUNCTION_ARGS);
