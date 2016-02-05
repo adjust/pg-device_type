@@ -25,6 +25,7 @@ char *device_type_to_str(device_type c)
       case TABLET: return create_string(CONST_STRING("tablet"));
       case TV: return create_string(CONST_STRING("tv"));
       case UNKNOWN: return create_string(CONST_STRING("unknown"));
+      case 0: return create_string(CONST_STRING("tv"));
       default: elog(ERROR, "internal error unexpected num in device_type_to_str");
   }
 }
@@ -33,7 +34,7 @@ static inline uint8
 check_device_type_num(const char *str, const char *expected, device_type dt)
 {
     if (strcmp(expected, str) != 0)
-        return 0;
+        elog(ERROR, "unknown input device_type: %s", str);
 
     return dt;
 }
@@ -44,7 +45,7 @@ get_device_type_num_p(const char *str)
     switch (str[1]) {
         case 'c': return check_device_type_num(str, "pc", PC);
         case 'h': return check_device_type_num(str, "phone", PHONE);
-        default : return 0;
+        default : elog(ERROR, "unknown input device_type: %s", str);
     }
 }
 
@@ -54,7 +55,7 @@ get_device_type_num_s(const char *str)
     switch (str[1]) {
       case 'e': return check_device_type_num(str, "server", SERVER);
       case 'i': return check_device_type_num(str, "simulator", SIMULATOR);
-      default : return 0;
+      default : elog(ERROR, "unknown input device_type: %s", str);
     }
 }
 static inline uint8
@@ -63,7 +64,7 @@ get_device_type_num_t(const char *str)
     switch (str[1]) {
       case 'v': return check_device_type_num(str, "tv", TV);
       case 'a': return check_device_type_num(str, "tablet", TABLET);
-      default : return 0;
+      default : elog(ERROR, "unknown input device_type: %s", str);
     }
 }
 
@@ -84,9 +85,8 @@ device_type device_type_from_str(const char *str)
     case 's': return get_device_type_num_s(str);
     case 't': return get_device_type_num_t(str);
     case 'u': return check_device_type_num(str, "unknown", UNKNOWN);
+    default : elog(ERROR, "unknown input device_type: %s", str);
 	}
-
-  elog(ERROR, "unknown input device_type: %s", str);
 
 	return 0; //keep compiler quiet//
 }
