@@ -25,7 +25,7 @@ char *device_type_to_str(device_type c)
       case TABLET: return create_string(CONST_STRING("tablet"));
       case TV: return create_string(CONST_STRING("tv"));
       case UNKNOWN: return create_string(CONST_STRING("unknown"));
-      default: elog(ERROR, "internal error unexpected num in device_type_to_str");
+      default: elog(ERROR, "internal error unexpected num %d in device_type_to_str", c);
   }
 }
 
