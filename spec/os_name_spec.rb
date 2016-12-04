@@ -26,4 +26,8 @@ describe 'device_type' do
   it 'should rais an exception on invalid device_type' do
     expect{query("SELECT 'kermit'::device_type")}.to throw_error('unknown input device_type: kermit')
   end
+
+  it 'should rais an exception on invalid device_type' do
+    expect{query("SELECT 'tb'::device_type")}.to throw_error('unknown input device_type: tb')
+  end
 end

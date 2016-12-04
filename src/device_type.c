@@ -33,7 +33,7 @@ static inline uint8
 check_device_type_num(const char *str, const char *expected, device_type dt)
 {
     if (strcmp(expected, str) != 0)
-        return 0;
+        elog(ERROR, "unknown input device_type: %s", str);
 
     return dt;
 }
@@ -44,8 +44,9 @@ get_device_type_num_p(const char *str)
     switch (str[1]) {
         case 'c': return check_device_type_num(str, "pc", PC);
         case 'h': return check_device_type_num(str, "phone", PHONE);
-        default : return 0;
     }
+    elog(ERROR, "unknown input device_type: %s", str);
+    return 0; //keep compiler quiet//
 }
 
 static inline uint8
@@ -54,8 +55,10 @@ get_device_type_num_s(const char *str)
     switch (str[1]) {
       case 'e': return check_device_type_num(str, "server", SERVER);
       case 'i': return check_device_type_num(str, "simulator", SIMULATOR);
-      default : return 0;
     }
+    elog(ERROR, "unknown input device_type: %s", str);
+    return 0; //keep compiler quiet//
+
 }
 static inline uint8
 get_device_type_num_t(const char *str)
@@ -63,8 +66,9 @@ get_device_type_num_t(const char *str)
     switch (str[1]) {
       case 'v': return check_device_type_num(str, "tv", TV);
       case 'a': return check_device_type_num(str, "tablet", TABLET);
-      default : return 0;
     }
+    elog(ERROR, "unknown input device_type: %s", str);
+    return 0; //keep compiler quiet//
 }
 
 

@@ -78,3 +78,12 @@ ERROR:  unknown input device_type: kermit
 LINE 1: SELECT 'kermit'::device_type;
                ^
 ROLLBACK;
+BEGIN;
+-- device_type should rais an exception on invalid device_type;
+-- ./spec/os_name_spec.rb:30;
+CREATE EXTENSION device_type;
+SELECT 'tb'::device_type;
+ERROR:  unknown input device_type: tb
+LINE 1: SELECT 'tb'::device_type;
+               ^
+ROLLBACK;
