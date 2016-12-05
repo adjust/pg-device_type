@@ -30,20 +30,11 @@ char *device_type_to_str(device_type c)
 }
 
 static inline uint8
-check_device_type_num(const char *str, const char *expected, device_type dt)
-{
-    if (strcmp(expected, str) != 0)
-        elog(ERROR, "unknown input device_type: %s", str);
-
-    return dt;
-}
-
-static inline uint8
 get_device_type_num_p(const char *str)
 {
     switch (str[1]) {
-        case 'c': return check_device_type_num(str, "pc", PC);
-        case 'h': return check_device_type_num(str, "phone", PHONE);
+        case 'c': if (strcmp(str, "pc") == 0) return PC;
+        case 'h': if (strcmp(str, "phone") == 0) return PHONE;
     }
     elog(ERROR, "unknown input device_type: %s", str);
     return 0; //keep compiler quiet//
@@ -53,8 +44,8 @@ static inline uint8
 get_device_type_num_s(const char *str)
 {
     switch (str[1]) {
-      case 'e': return check_device_type_num(str, "server", SERVER);
-      case 'i': return check_device_type_num(str, "simulator", SIMULATOR);
+      case 'e': if (strcmp(str, "server") == 0) return SERVER;
+      case 'i': if (strcmp(str, "simulator") == 0) return SIMULATOR;
     }
     elog(ERROR, "unknown input device_type: %s", str);
     return 0; //keep compiler quiet//
@@ -64,8 +55,8 @@ static inline uint8
 get_device_type_num_t(const char *str)
 {
     switch (str[1]) {
-      case 'v': return check_device_type_num(str, "tv", TV);
-      case 'a': return check_device_type_num(str, "tablet", TABLET);
+      case 'v': if (strcmp(str, "tv") == 0) return TV;
+      case 'a': if (strcmp(str, "tablet") == 0) return TABLET;
     }
     elog(ERROR, "unknown input device_type: %s", str);
     return 0; //keep compiler quiet//
@@ -80,14 +71,14 @@ device_type device_type_from_str(const char *str)
 
 	switch (str[0])
 	{
-		case 'b': return check_device_type_num(str, "bot", BOT);
-		case 'c': return check_device_type_num(str, "console", CONSOLE);
-		case 'i': return check_device_type_num(str, "ipod", IPOD);
-		case 'm': return check_device_type_num(str, "mac", MAC);
+		case 'b': if (strcmp(str, "bot") == 0) return BOT;
+		case 'c': if (strcmp(str, "console") == 0) return CONSOLE;
+		case 'i': if (strcmp(str, "ipod") == 0) return IPOD;
+		case 'm': if (strcmp(str, "mac") == 0) return MAC;
     case 'p': return get_device_type_num_p(str);
     case 's': return get_device_type_num_s(str);
     case 't': return get_device_type_num_t(str);
-    case 'u': return check_device_type_num(str, "unknown", UNKNOWN);
+    case 'u': if (strcmp(str, "unknown") == 0) return UNKNOWN;
 	}
 
   elog(ERROR, "unknown input device_type: %s", str);
