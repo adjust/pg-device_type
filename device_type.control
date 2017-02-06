@@ -1,5 +1,5 @@
-        # device_type extension
-        comment = 'my awesome extension'
-        default_version = '0.0.1'
-        relocatable = true
-        requires = ''
+# device_type extension
+comment = 'DeviceType as a scalar data type'
+default_version = '1.0.0'
+relocatable = true
+requires = ''

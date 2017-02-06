@@ -1,3 +1,6 @@
+-- complain if script is sourced in psql, rather than via CREATE EXTENSION
+\echo Use "CREATE EXTENSION device_type" to load this file. \quit
+--source file sql/device_type.sql
 CREATE FUNCTION device_type_in(cstring)
 RETURNS device_type
 AS '$libdir/device_type'
@@ -132,3 +135,4 @@ CREATE OPERATOR CLASS hash_device_type_ops
     DEFAULT FOR TYPE device_type USING hash AS
         OPERATOR        1       = ,
         FUNCTION        1       hash_device_type(device_type);
+ 

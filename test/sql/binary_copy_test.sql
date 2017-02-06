@@ -1,6 +1,4 @@
 BEGIN;
--- binary_copy should copy data binary from country;
--- ./spec/binary_copy_spec.rb:9;
 CREATE EXTENSION device_type;
 CREATE TABLE before (a device_type);
 INSERT INTO before VALUES ('bot'), ('console'), ('ipod'), ('mac'), ('pc'), ('phone'), ('server'), ('simulator'), ('tablet'), ('tv'), ('unknown');
