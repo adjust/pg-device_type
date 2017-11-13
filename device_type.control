@@ -1,5 +1,5 @@
         # device_type extension
-        comment = 'my awesome extension'
+        comment = 'An emum type for mobile device types'
         default_version = '0.0.1'
         relocatable = true
         requires = ''
