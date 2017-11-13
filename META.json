@@ -1,0 +1,39 @@
+{
+   "name": "device_type",
+   "abstract": "Enumerable type for mobile device types",
+   "version": "0.0.1",
+   "maintainer": [ "Chris Travers <christravers@adjust.com>", "Manuel Kniep <rapimo@adjust.com>" ],
+   "license": {
+      "PostgreSQL": "http://www.postgresql.org/about/licence"
+   },
+   "provides": { 
+      "device_type": {
+         "file": "sql/device_type.sql",
+         "version": "0.0.1",
+         "abstract": "Enumerable mobile device type.  Stored in one byte."
+      }
+   },
+   "meta-spec": {
+     "version": "1.0.0",
+     "url": "http://pgxn.org/meta/spec.txt"
+   },
+   "description": "This extnesion offers a one-byte storage type that works as an enum for mobile device types.",
+   "prereqs": {
+      "runtime": {
+        "requires": {
+           "PostgreSQL": "9.3.0"
+        }
+      }
+   },
+   "resources": {
+       "bugtracker": {
+           "web": "http://github.com/adjust/pg-country/issues"
+       },
+       "repository": {
+          "url": "git://github.com/adjust/pg-country.git",
+          "web": "http://github.com/adjust/pg-country",
+          "type": "git"
+       }
+   }
+}
+
