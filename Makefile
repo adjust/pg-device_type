@@ -7,7 +7,7 @@ MODULE_big = device_type
 OBJS = $(patsubst %.c,%.o,$(wildcard src/*.c))
 TESTS        = $(wildcard test/sql/*.sql)
 REGRESS      = $(patsubst test/sql/%.sql,%,$(TESTS))
-REGRESS_OPTS = --inputdir=test --load-language=plpgsql
+REGRESS_OPTS = --inputdir=test
 include $(PGXS)
 
 
