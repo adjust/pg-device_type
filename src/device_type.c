@@ -206,3 +206,37 @@ hash_device_type(PG_FUNCTION_ARGS)
 {
   return hash_uint32((int32) PG_GETARG_UINT8(0));
 }
+
+PG_FUNCTION_INFO_V1(int4_to_device_type);
+Datum int4_to_device_type(PG_FUNCTION_ARGS)
+{
+	device_type c = PG_GETARG_INT32(0);
+
+    /* XXX we do not check input validity for performance reasons */
+	PG_RETURN_UINT8(c);
+}
+
+PG_FUNCTION_INFO_V1(device_type_to_int4);
+Datum device_type_to_int4(PG_FUNCTION_ARGS)
+{
+	device_type c = PG_GETARG_UINT8(0);
+
+	PG_RETURN_INT32(c);
+}
+
+PG_FUNCTION_INFO_V1(int2_to_device_type);
+Datum int2_to_device_type(PG_FUNCTION_ARGS)
+{
+	device_type c = PG_GETARG_INT16(0);
+
+    /* XXX we do not check input validity for performance reasons */
+	PG_RETURN_UINT8(c);
+}
+
+PG_FUNCTION_INFO_V1(device_type_to_int2);
+Datum device_type_to_int2(PG_FUNCTION_ARGS)
+{
+	device_type c = PG_GETARG_UINT8(0);
+
+	PG_RETURN_INT16(c);
+}

@@ -1,0 +1,27 @@
+BEGIN;
+CREATE EXTENSION device_type;
+SELECT 'server'::device_type::int4;
+ int4 
+------
+  160
+(1 row)
+
+SELECT 'server'::device_type::int2;
+ int2 
+------
+  160
+(1 row)
+
+SELECT 160::int4::device_type;
+ device_type 
+-------------
+ server
+(1 row)
+
+SELECT 160::int2::device_type;
+ device_type 
+-------------
+ server
+(1 row)
+
+ROLLBACK;
