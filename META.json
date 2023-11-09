@@ -1,15 +1,17 @@
 {
    "name": "device_type",
    "abstract": "Enumerable type for mobile device types",
-   "version": "0.0.2",
-   "maintainer": [ "Chris Travers <chris.travers@adjust.com>", "Manuel Kniep <rapimo@adjust.com>" ],
+   "version": "0.0.3",
+   "maintainer" : [
+      "adjustgmbh"
+   ],
    "license": {
       "PostgreSQL": "http://www.postgresql.org/about/licence"
    },
    "provides": { 
       "device_type": {
          "file": "sql/device_type.sql",
-         "version": "0.0.2",
+         "version": "0.0.3",
          "abstract": "Enumerable mobile device type.  Stored in one byte."
       }
    },
@@ -21,7 +23,7 @@
    "prereqs": {
       "runtime": {
         "requires": {
-           "PostgreSQL": "9.3.0"
+           "PostgreSQL": "10.0.0"
         }
       }
    },
