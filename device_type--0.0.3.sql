@@ -1,4 +1,0 @@
--- device_type 0.0.3
---
--- Update META.json
--- New version for update PGXN 
